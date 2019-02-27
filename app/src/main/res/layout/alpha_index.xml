@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_publication_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:visibility="visible"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvContact"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/tvSelectedAlphabet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text=""
+                android:visibility="gone"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="#949494"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:paddingTop="@dimen/_12sdp"
+                android:paddingBottom="@dimen/_12sdp"
+                android:background="@drawable/drawable_selected_text"/>
+        </FrameLayout>
+        <LinearLayout
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvAlphabet"
+                android:layout_width="@dimen/_50sdp"
+                android:visibility="visible"
+                android:paddingBottom="@dimen/_10sdp"
+                android:background="#d3d3d3"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+</LinearLayout>
