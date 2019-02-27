@@ -65,7 +65,8 @@ public class AlphaIndex extends AppCompatActivity {
             public void onClick(final int position) {
                 for(int i=0;i<ContactList.size();i++){
                     if(String.valueOf(ContactList.get(i).getContact_name().charAt(0)).toUpperCase().equalsIgnoreCase(alphabet[position])){
-                        rvContact.smoothScrollToPosition(i);
+                      /*  rvContact.smoothScrollToPosition(i);*/
+                        mLayoutManager.scrollToPositionWithOffset(i, 20);
                         break;
                     }
                 }
