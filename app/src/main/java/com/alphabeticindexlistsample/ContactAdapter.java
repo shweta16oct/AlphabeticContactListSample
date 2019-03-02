@@ -6,15 +6,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 public class ContactAdapter extends RecyclerView.Adapter <ContactAdapter.ViewHolder>{
     private Context context;
-    private List<ContactModel> contactList;
-    public ContactAdapter(Context context, List<ContactModel> contact) {
+    private List<CommonModel> contactList;
+    private List<CommonModel> alphabetList;
+    public ContactAdapter(Context context, List<CommonModel> alphabetList, List<CommonModel> contact) {
         this.contactList=contact;
+        this.alphabetList=alphabetList;
         this.context=context;
     }
 
@@ -32,6 +35,22 @@ public class ContactAdapter extends RecyclerView.Adapter <ContactAdapter.ViewHol
        viewHolder.view.setVisibility(View.GONE);
      }else
          viewHolder.view.setVisibility(View.VISIBLE);
+
+     if(i==0){
+         viewHolder.textHeader.setVisibility(View.VISIBLE);
+         viewHolder.viewHeader.setVisibility(View.VISIBLE);
+         viewHolder.viewDivider.setVisibility(View.GONE);
+         viewHolder.textHeader.setText(contactList.get(i).getAlphabet());
+     }else if(contactList.get(i).getAlphabet().equalsIgnoreCase(contactList.get(i-1).getAlphabet())){
+         viewHolder.textHeader.setVisibility(View.GONE);
+         viewHolder.viewHeader.setVisibility(View.GONE);
+         viewHolder.viewDivider.setVisibility(View.GONE);
+     }else{
+         viewHolder.textHeader.setVisibility(View.VISIBLE);
+         viewHolder.viewHeader.setVisibility(View.VISIBLE);
+         viewHolder.textHeader.setText(contactList.get(i).getAlphabet());
+         viewHolder.viewDivider.setVisibility(View.VISIBLE);
+     }
     }
 
     @Override
@@ -42,12 +61,16 @@ public class ContactAdapter extends RecyclerView.Adapter <ContactAdapter.ViewHol
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textContact;
-        View view;
+        TextView textContact,textHeader;
+        View view,viewHeader;
+        LinearLayout viewDivider;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textContact=itemView.findViewById(R.id.textContact);
+            textHeader=itemView.findViewById(R.id.textHeader);
             view=itemView.findViewById(R.id.view);
+            viewHeader=itemView.findViewById(R.id.viewHeader);
+            viewDivider=itemView.findViewById(R.id.viewDivider);
         }
     }
 }

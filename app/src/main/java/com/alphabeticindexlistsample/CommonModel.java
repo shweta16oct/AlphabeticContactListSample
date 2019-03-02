@@ -2,9 +2,28 @@ package com.alphabeticindexlistsample;
 
 import java.util.Comparator;
 
-public class ContactModel {
+public class CommonModel {
     private String contact_name;
     private ContactType contactInfo;
+    private boolean isClicked;
+
+    public String getAlphabet() {
+        return alphabet;
+    }
+
+    public void setAlphabet(String alphabet) {
+        this.alphabet = alphabet;
+    }
+
+    private String alphabet;
+
+    public boolean isClicked() {
+        return isClicked;
+    }
+
+    public void setClicked(boolean clicked) {
+        isClicked = clicked;
+    }
 
     public String getContact_name() {
         return contact_name;
@@ -22,9 +41,9 @@ public class ContactModel {
         this.contactInfo = contactInfo;
     }
 
-    public static Comparator<ContactModel> comparator=new Comparator<ContactModel>() {
+    public static Comparator<CommonModel> comparator=new Comparator<CommonModel>() {
         @Override
-        public int compare(ContactModel o1, ContactModel o2) {
+        public int compare(CommonModel o1, CommonModel o2) {
             String contact1 = String.valueOf(o1.getContact_name().toLowerCase());
             String contact2 = String.valueOf(o2.getContact_name().toLowerCase());
 
