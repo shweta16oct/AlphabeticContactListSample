@@ -31,10 +31,7 @@ public class ContactAdapter extends RecyclerView.Adapter <ContactAdapter.ViewHol
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
      viewHolder.textContact.setText(contactList.get(i).getContact_name());
-     if(i==getItemCount()-1){
-       viewHolder.view.setVisibility(View.GONE);
-     }else
-         viewHolder.view.setVisibility(View.VISIBLE);
+
 
      if(i==0){
          viewHolder.textHeader.setVisibility(View.VISIBLE);
@@ -45,12 +42,18 @@ public class ContactAdapter extends RecyclerView.Adapter <ContactAdapter.ViewHol
          viewHolder.textHeader.setVisibility(View.GONE);
          viewHolder.viewHeader.setVisibility(View.GONE);
          viewHolder.viewDivider.setVisibility(View.GONE);
+         viewHolder.view.setVisibility(View.VISIBLE);
      }else{
          viewHolder.textHeader.setVisibility(View.VISIBLE);
          viewHolder.viewHeader.setVisibility(View.VISIBLE);
          viewHolder.textHeader.setText(contactList.get(i).getAlphabet());
          viewHolder.viewDivider.setVisibility(View.VISIBLE);
      }
+     if(getItemCount()-2>i)
+     if(!contactList.get(i).getAlphabet().equalsIgnoreCase(contactList.get(i+1).getAlphabet())){
+         viewHolder.view.setVisibility(View.GONE);
+     }
+
     }
 
     @Override
